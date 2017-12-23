@@ -81,7 +81,7 @@ RSpec.describe MultiKeyHash do
         regular_hash = multi_hash.to_h
 
         expect(regular_hash).to eq ({
-          'one' => 'number',
+          'one'    => 'number',
           'two'    => 'number',
           'three'  => 'number',
           :a 		   => 'letter',

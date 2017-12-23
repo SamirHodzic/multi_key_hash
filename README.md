@@ -1,8 +1,6 @@
 # MultiKeyHash
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/multi_key_hash`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Hash with multiple keys for same value, symbol/string-indifferent key access.
 
 ## Installation
 
@@ -22,18 +20,69 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+#### Creating new multiple keys hash and accessing it's keys
 
-## Development
+```ruby
+require 'multi_key_hash'
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+multi_hash = MultiKeyHash.new({%w[one two three] => 'number', %i[a b c] => 'letter', 'single' => 'value'})
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+multi_hash['one']         # number
+multi_hash[:a]            # letter
+multi_hash['single']      # value
+```
 
-## Contributing
+#### Modifying values inside hash
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/multi_key_hash.
+```ruby
+multi_hash = MultiKeyHash.new({%w[one two three] => 'number', %i[a b c] => 'letter', 'single' => 'value'})
+
+multi_hash['one'] = 'first_number'         # first_number
+multi_hash['two']                          # number
+
+multi_hash[:a] = 'first_letter'            # first_letter
+multi_hash[:b]                             # letter
+```
+
+#### Adding new keys to hash
+
+```ruby
+multi_hash = MultiKeyHash.new({%w[one two three] => 'number', %i[a b c] => 'letter', 'single' => 'value'})
+
+multi_hash[:language] = 'english'                         # single key
+multi_hash[[:ruby, :js, :php]] = 'programming_language'   # multiple keys
+```
+
+#### Deleting keys from hash
+
+```ruby
+multi_hash = MultiKeyHash.new({%w[one two three] => 'number', %i[a b c] => 'letter', 'single' => 'value'})
+
+multi_hash.delete(:a)
+multi_hash[:b]             #letter
+
+multi_hash.delete('one')
+multi_hash['two']          #number
+```
+
+#### Converting to regular hash
+
+```ruby
+multi_hash = MultiKeyHash.new({%w[one two three] => 'number', %i[a b c] => 'letter', 'single' => 'value'})
+
+multi_hash.to_h
+
+# {
+#   'one'    => 'number',
+#   'two'    => 'number',
+#   'three'  => 'number',
+#   :a       => 'letter',
+#   :b       => 'letter',
+#   :c       => 'letter',
+#   'single' => 'value'
+# }
+```
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+[MIT License](https://opensource.org/licenses/MIT).
