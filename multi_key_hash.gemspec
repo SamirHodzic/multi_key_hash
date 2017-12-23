@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['samir.sgd@gmail.com']
 
   spec.summary       = 'MultiKeyHash gem for ruby'
-  spec.description   = 'Multiple key hashes for ruby'
+  spec.description   = 'Multiple key hash for ruby'
   spec.homepage      = 'https://github.com/SamirHodzic/multi_key_hash'
   spec.license       = 'MIT'
 

@@ -1,6 +1,9 @@
 # MultiKeyHash
 
-Hash with multiple keys for same value, symbol/string-indifferent key access.
+> Hash with multiple keys for same value, symbol/string-indifferent key access.
+
+[![Gem Version](https://badge.fury.io/rb/multi_key_hash.svg)](https://badge.fury.io/rb/multi_key_hash)
+[![build-url][build-url-svg]][build-url]
 
 ## Installation
 
@@ -86,3 +89,6 @@ multi_hash.to_h
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT).
+
+[build-url]: https://travis-ci.org/SamirHodzic/multi_key_hash
+[build-url-svg]: https://travis-ci.org/SamirHodzic/multi_key_hash.svg?branch=master
